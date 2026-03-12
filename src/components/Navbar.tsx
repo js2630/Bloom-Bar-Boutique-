@@ -95,49 +95,64 @@ const Navbar = () => {
           {isAuthenticated ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" className="relative h-10 w-10 rounded-full bg-muted/50 border border-border/50 hover:bg-muted transition-all">
-                  <User className="h-5 w-5" />
+                <Button variant="ghost" size="icon" className="relative h-10 w-10 rounded-full border border-primary/20 hover:border-primary/50 hover:bg-primary/5 transition-all outline-none">
+                  <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                    <User className="h-5 w-5" />
+                  </div>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-56 mt-2 p-2 rounded-2xl border-border/50 shadow-elevated animate-scale-in">
-                <DropdownMenuLabel className="font-normal p-3">
-                  <div className="flex flex-col space-y-1">
-                    <p className="text-sm font-bold leading-none">{user?.name}</p>
-                    <p className="text-xs leading-none text-muted-foreground mt-1">
-                      {user?.email}
-                    </p>
-                  </div>
-                </DropdownMenuLabel>
-                <DropdownMenuSeparator className="bg-border/50" />
-                <DropdownMenuItem asChild>
-                  <Link to="/wishlist" className="cursor-pointer p-3 rounded-xl hover:bg-muted/50 flex items-center gap-3">
-                    <Heart className="h-4 w-4 text-muted-foreground" />
-                    <span className="text-sm font-medium">My Wishlist</span>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/cart" className="cursor-pointer p-3 rounded-xl hover:bg-muted/50 flex items-center gap-3">
-                    <ShoppingBag className="h-4 w-4 text-muted-foreground" />
-                    <span className="text-sm font-medium">My Cart</span>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuSeparator className="bg-border/50" />
-                <DropdownMenuItem 
-                  onClick={logout}
-                  className="p-3 rounded-xl focus:bg-destructive/5 focus:text-destructive text-destructive cursor-pointer flex items-center gap-3 transition-colors"
-                >
-                  <LogOut className="h-4 w-4" />
-                  <span className="text-sm font-bold">Log Out</span>
-                </DropdownMenuItem>
+              <DropdownMenuContent align="end" className="w-64 mt-3 p-2 rounded-[1.5rem] border-primary/10 shadow-2xl backdrop-blur-xl bg-background/95 animate-scale-in">
+                <div className="p-4 mb-1">
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-primary/60 mb-1">Signed in as</p>
+                  <p className="text-sm font-heading font-bold text-foreground truncate">{user?.name}</p>
+                  <p className="text-xs text-muted-foreground truncate">{user?.email}</p>
+                </div>
+                
+                <DropdownMenuSeparator className="bg-primary/5 mx-2" />
+                
+                <div className="p-1 space-y-1">
+                  <DropdownMenuItem asChild>
+                    <Link to="/wishlist" className="cursor-pointer p-3 rounded-xl hover:bg-primary/5 flex items-center gap-3 transition-colors group">
+                      <div className="h-8 w-8 rounded-lg bg-accent/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <Heart className="h-4 w-4 text-accent" />
+                      </div>
+                      <span className="text-sm font-medium">My Favorites</span>
+                    </Link>
+                  </DropdownMenuItem>
+                  
+                  <DropdownMenuItem asChild>
+                    <Link to="/cart" className="cursor-pointer p-3 rounded-xl hover:bg-primary/5 flex items-center gap-3 transition-colors group">
+                      <div className="h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <ShoppingBag className="h-4 w-4 text-primary" />
+                      </div>
+                      <span className="text-sm font-medium">My Cart</span>
+                    </Link>
+                  </DropdownMenuItem>
+                </div>
+
+                <DropdownMenuSeparator className="bg-primary/5 mx-2" />
+                
+                <div className="p-1">
+                  <DropdownMenuItem 
+                    onClick={logout}
+                    className="p-3 rounded-xl focus:bg-destructive/5 focus:text-destructive text-destructive cursor-pointer flex items-center gap-3 transition-colors group"
+                  >
+                    <div className="h-8 w-8 rounded-lg bg-destructive/5 flex items-center justify-center group-hover:bg-destructive/10 transition-colors">
+                      <LogOut className="h-4 w-4" />
+                    </div>
+                    <span className="text-sm font-bold">Sign Out</span>
+                  </DropdownMenuItem>
+                </div>
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
             <Link to="/login" className="hidden md:block mr-2">
-              <Button variant="ghost" size="icon" title="Login" className="h-10 w-10 rounded-full border border-transparent hover:border-border/50">
-                <User className="h-5 w-5" />
+              <Button variant="ghost" size="icon" title="Login" className="h-10 w-10 rounded-full border border-primary/20 hover:border-primary/50 hover:bg-primary/5">
+                <User className="h-5 w-5 text-primary/70" />
               </Button>
             </Link>
           )}
+
           
           <Link to="/wishlist">
             <Button variant="ghost" size="icon" className="relative">
@@ -214,37 +229,39 @@ const Navbar = () => {
               );
             })}
 
-            <div className="pt-4 mt-4 border-t border-border">
+            <div className="pt-6 mt-6 border-t border-primary/10">
               {isAuthenticated ? (
-                <div className="flex flex-col gap-4">
-                  <div className="flex items-center gap-3 px-2">
-                    <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                      <User className="h-5 w-5" />
+                <div className="flex flex-col gap-6">
+                  <div className="flex items-center gap-4 px-4 py-3 bg-primary/5 rounded-[1.5rem] border border-primary/10">
+                    <div className="h-12 w-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary shadow-sm">
+                      <User className="h-6 w-6" />
                     </div>
-                    <div>
-                      <p className="text-sm font-bold leading-none">{user?.name}</p>
-                      <p className="text-[10px] text-muted-foreground mt-1">{user?.email}</p>
+                    <div className="min-w-0">
+                      <p className="text-xs font-bold uppercase tracking-widest text-primary/60 leading-none mb-1">My Account</p>
+                      <p className="text-sm font-heading font-bold text-foreground truncate">{user?.name}</p>
+                      <p className="text-[10px] text-muted-foreground truncate">{user?.email}</p>
                     </div>
                   </div>
                   <Button 
                     variant="outline" 
-                    className="w-full justify-start gap-2 h-12 rounded-xl text-destructive hover:text-destructive hover:bg-destructive/5 border-destructive/20"
+                    className="w-full justify-center gap-2 h-14 rounded-2xl text-destructive bg-destructive/5 hover:bg-destructive/10 border-destructive/20 font-bold transition-all active:scale-95"
                     onClick={() => {
                       logout();
                       setMobileOpen(false);
                     }}
                   >
-                    <LogOut className="h-4 w-4" /> Sign Out
+                    <LogOut className="h-5 w-5" /> Sign Out
                   </Button>
                 </div>
               ) : (
                 <Link to="/login" onClick={() => setMobileOpen(false)}>
-                  <Button className="w-full justify-start gap-2 h-12 rounded-xl">
-                    <User className="h-4 w-4" /> Sign In / Sign Up
+                  <Button className="w-full justify-center gap-2 h-14 rounded-2xl font-bold shadow-lg shadow-primary/20 transition-all active:scale-95">
+                    <User className="h-5 w-5" /> Sign In / Create Account
                   </Button>
                 </Link>
               )}
             </div>
+
           </div>
         </nav>
       )}
