@@ -120,16 +120,16 @@ const About = () => {
           <h2 className="text-3xl md:text-5xl font-heading mb-6">Join Our Story on Instagram</h2>
           <p className="text-lg text-muted-foreground mb-10 leading-relaxed">
             Every day we share new stories, behind-the-scenes magic, and limited edition drops. 
-            DM us @the.bloombar_in for personalized service and inquiries.
+            DM us @the_bloombar_in for personalized service and inquiries.
           </p>
           <a 
-            href="https://www.instagram.com/the.bloombar_in" 
+            href="https://www.instagram.com/the_bloombar_in" 
             target="_blank" 
             rel="noreferrer"
             className="inline-block"
           >
             <Button size="xl" className="rounded-full px-12 text-lg">
-              Follow Us @the.bloombar_in
+              Follow Us @the_bloombar_in
             </Button>
           </a>
         </div>
