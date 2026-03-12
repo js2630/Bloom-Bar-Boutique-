@@ -54,13 +54,13 @@ const Index = () => {
 
       {/* Featured Bouquets - Improved Mobile Layout */}
       <section className="container py-12 md:py-20">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 md:mb-12 gap-4">
-          <div className="text-center md:text-left">
-            <p className="text-[10px] md:text-sm font-bold tracking-[0.2em] uppercase text-primary mb-2">Curated for You</p>
-            <h2 className="text-3xl md:text-5xl font-heading text-foreground">Featured Bouquets</h2>
+        <div className="flex items-end justify-between mb-8 md:mb-12">
+          <div>
+            <p className="text-xs md:text-sm font-medium tracking-widest uppercase text-primary mb-2">Curated for You</p>
+            <h2 className="text-2xl md:text-4xl font-heading text-foreground">Featured Bouquets</h2>
           </div>
-          <Link to="/shop" className="flex items-center justify-center md:justify-end gap-1 text-xs font-bold text-primary hover:underline uppercase tracking-widest bg-primary/5 md:bg-transparent py-2 px-4 rounded-full md:p-0">
-            View Shop <ArrowRight className="h-4 w-4" />
+          <Link to="/shop" className="flex items-center gap-1 text-xs md:text-sm font-medium text-primary hover:underline">
+            View All <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
 
@@ -79,12 +79,12 @@ const Index = () => {
 
       {/* Best Sellers */}
       <section className="container py-12 md:py-20">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 md:mb-12 gap-4">
-          <div className="text-center md:text-left">
-            <p className="text-[10px] md:text-sm font-bold tracking-[0.2em] uppercase text-primary mb-2">Most Loved</p>
-            <h2 className="text-3xl md:text-5xl font-heading text-foreground">Best Sellers</h2>
+        <div className="flex items-end justify-between mb-8 md:mb-12">
+          <div>
+            <p className="text-xs md:text-sm font-medium tracking-widest uppercase text-primary mb-2">Most Loved</p>
+            <h2 className="text-2xl md:text-4xl font-heading text-foreground">Best Sellers</h2>
           </div>
-          <Link to="/shop" className="flex items-center justify-center md:justify-end gap-1 text-xs font-bold text-primary hover:underline uppercase tracking-widest bg-primary/5 md:bg-transparent py-2 px-4 rounded-full md:p-0">
+          <Link to="/shop" className="flex items-center gap-1 text-xs md:text-sm font-medium text-primary hover:underline">
             View All <ArrowRight className="h-4 w-4" />
           </Link>
         </div>

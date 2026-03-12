@@ -47,8 +47,8 @@ const Register = () => {
 
   const handleVerifyOTP = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (otp.length < 6) {
-      toast.error("Please enter the verification code");
+    if (otp.length !== 6) {
+      toast.error("Please enter the 6-digit code");
       return;
     }
     
@@ -91,19 +91,17 @@ const Register = () => {
             <div className="space-y-4 w-full flex flex-col items-center">
               <InputOTP
                 disabled={isSubmitting}
-                maxLength={8}
+                maxLength={6}
                 value={otp}
                 onChange={(value) => setOtp(value)}
               >
                 <InputOTPGroup className="gap-2">
-                  <InputOTPSlot index={0} className="rounded-xl border-2 h-14 w-10 md:w-12" />
-                  <InputOTPSlot index={1} className="rounded-xl border-2 h-14 w-10 md:w-12" />
-                  <InputOTPSlot index={2} className="rounded-xl border-2 h-14 w-10 md:w-12" />
-                  <InputOTPSlot index={3} className="rounded-xl border-2 h-14 w-10 md:w-12" />
-                  <InputOTPSlot index={4} className="rounded-xl border-2 h-14 w-10 md:w-12" />
-                  <InputOTPSlot index={5} className="rounded-xl border-2 h-14 w-10 md:w-12" />
-                  <InputOTPSlot index={6} className="rounded-xl border-2 h-14 w-10 md:w-12" />
-                  <InputOTPSlot index={7} className="rounded-xl border-2 h-14 w-10 md:w-12" />
+                  <InputOTPSlot index={0} className="rounded-xl border-2 h-14 w-12" />
+                  <InputOTPSlot index={1} className="rounded-xl border-2 h-14 w-12" />
+                  <InputOTPSlot index={2} className="rounded-xl border-2 h-14 w-12" />
+                  <InputOTPSlot index={3} className="rounded-xl border-2 h-14 w-12" />
+                  <InputOTPSlot index={4} className="rounded-xl border-2 h-14 w-12" />
+                  <InputOTPSlot index={5} className="rounded-xl border-2 h-14 w-12" />
                 </InputOTPGroup>
               </InputOTP>
               <button 

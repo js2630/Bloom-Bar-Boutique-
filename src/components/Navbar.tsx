@@ -34,7 +34,6 @@ const Navbar = () => {
   const { user, logout, isAuthenticated } = useAuth();
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [mobileOccasionsOpen, setMobileOccasionsOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
@@ -59,33 +58,22 @@ const Navbar = () => {
                     <ChevronDown className="h-4 w-4 transition-transform group-hover/occasions:rotate-180" />
                   </Link>
 
-                  
-                  {/* Visual Dropdown */}
-                  <div className="absolute top-full pt-2 left-1/2 -translate-x-1/2 opacity-0 translate-y-3 pointer-events-none group-hover/occasions:opacity-100 group-hover/occasions:translate-y-0 group-hover/occasions:pointer-events-auto transition-all duration-300 z-50">
-                    <div className="bg-background/95 backdrop-blur-xl shadow-elevated border border-border/50 rounded-[2rem] w-[450px] p-6 overflow-hidden animate-scale-in">
-                      <div className="grid grid-cols-2 gap-3">
+                  {/* Compact Elegant Dropdown */}
+                  <div className="absolute top-full pt-2 left-0 opacity-0 translate-y-2 pointer-events-none group-hover/occasions:opacity-100 group-hover/occasions:translate-y-0 group-hover/occasions:pointer-events-auto transition-all duration-300 z-50">
+                    <div className="bg-background/95 backdrop-blur-md shadow-elevated border border-border/50 rounded-2xl w-60 py-3 overflow-hidden animate-scale-in">
+                      <div className="flex flex-col">
                         {occasionLinks.map((occ) => (
                           <Link
                             key={occ.label}
                             to={occ.path}
-                            className="group/item flex items-center gap-4 p-3 rounded-2xl hover:bg-primary/5 transition-all duration-300 border border-transparent hover:border-primary/10"
+                            className="group/item flex items-center justify-between px-5 py-3 hover:bg-muted/50 transition-colors relative"
                           >
-                            <div className="h-12 w-12 rounded-xl overflow-hidden bg-muted group-hover/item:scale-105 transition-transform duration-500">
-                              <img src={occ.image} alt={occ.label} className="h-full w-full object-cover" />
-                            </div>
-                            <div className="flex flex-col">
-                              <span className="text-sm font-bold text-foreground group-hover/item:text-primary transition-colors">
-                                {occ.label}
-                              </span>
-                              <span className="text-[10px] text-muted-foreground uppercase tracking-widest">Collection</span>
-                            </div>
+                            <span className="text-sm font-medium text-foreground/80 group-hover/item:text-primary transition-colors">
+                              {occ.label}
+                            </span>
+                            <div className="w-1.5 h-1.5 rounded-full bg-primary opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-300" />
                           </Link>
                         ))}
-                      </div>
-                      <div className="mt-4 pt-4 border-t border-border/50 text-center">
-                        <Link to="/shop" className="text-xs font-bold text-primary hover:underline uppercase tracking-widest">
-                          View All Moments →
-                        </Link>
                       </div>
                     </div>
                   </div>
@@ -187,48 +175,30 @@ const Navbar = () => {
 
       {/* Mobile Nav */}
       {mobileOpen && (
-        <nav className="md:hidden border-t border-border bg-background animate-fade-in pb-10 shadow-elevated absolute w-full top-full left-0 z-40 max-h-[85vh] overflow-y-auto">
-          <div className="container py-6 flex flex-col gap-5">
+        <nav className="md:hidden border-t border-border bg-background animate-fade-in pb-6 shadow-elevated absolute w-full top-full left-0 z-40">
+          <div className="container py-4 flex flex-col gap-4">
             {navLinks.map((link) => {
               if (link.label === "Occasions") {
                 return (
-                  <div key={link.path} className="flex flex-col py-2 px-2 bg-muted/20 rounded-[2rem] border border-border/50 transition-all duration-300">
-                    <button 
-                      onClick={() => setMobileOccasionsOpen(!mobileOccasionsOpen)}
-                      className="flex items-center justify-between w-full p-4 rounded-2xl group"
+                  <div key={link.path} className="flex flex-col gap-3 py-2 border-y border-border/50">
+                    <Link
+                      to={link.path}
+                      onClick={() => setMobileOpen(false)}
+                      className="text-base font-medium text-foreground tracking-wide font-heading"
                     >
-                      <span className="text-sm font-bold uppercase tracking-widest text-primary font-heading">{link.label}</span>
-                      <ChevronDown className={`h-4 w-4 text-primary transition-transform duration-300 ${mobileOccasionsOpen ? "rotate-180" : ""}`} />
-                    </button>
-                    
-                    <div className={`grid grid-cols-1 gap-2 px-2 overflow-hidden transition-all duration-300 ${mobileOccasionsOpen ? "max-h-[500px] pb-4 opacity-100 mt-2" : "max-h-0 opacity-0"}`}>
+                      {link.label}
+                    </Link>
+                    <div className="grid grid-cols-2 gap-3 pb-2">
                       {occasionLinks.map(occ => (
                         <Link
                           key={occ.label}
                           to={occ.path}
-                          onClick={() => {
-                            setMobileOpen(false);
-                            setMobileOccasionsOpen(false);
-                          }}
-                          className="flex items-center gap-4 p-3 rounded-2xl bg-background border border-border/50 active:scale-[0.98] transition-all"
+                          onClick={() => setMobileOpen(false)}
+                          className="flex items-center justify-center p-3 rounded-xl bg-muted/30 hover:bg-muted/60 transition-colors text-xs font-medium text-foreground border border-transparent active:border-border"
                         >
-                          <div className="h-10 w-10 rounded-xl overflow-hidden bg-muted flex-shrink-0">
-                            <img src={occ.image} alt={occ.label} className="h-full w-full object-cover" />
-                          </div>
-                          <span className="text-sm font-bold text-foreground">{occ.label}</span>
-                          <ChevronDown className="h-3 w-3 ml-auto -rotate-90 text-muted-foreground/50" />
+                          {occ.label}
                         </Link>
                       ))}
-                      <Link 
-                        to="/shop" 
-                        onClick={() => {
-                          setMobileOpen(false);
-                          setMobileOccasionsOpen(false);
-                        }} 
-                        className="text-[10px] text-center mt-3 underline text-muted-foreground uppercase font-bold"
-                      >
-                        See All Collections
-                      </Link>
                     </div>
                   </div>
                 );
@@ -239,10 +209,8 @@ const Navbar = () => {
                   key={link.path}
                   to={link.path}
                   onClick={() => setMobileOpen(false)}
-                  className={`text-lg font-heading py-2 px-4 rounded-2xl transition-colors border-l-4 ${location.pathname === link.path && !location.search.includes('filter') && !location.search.includes('occasion') 
-                    ? "text-primary bg-primary/5 border-primary" 
-                    : "text-foreground border-transparent hover:bg-muted/50"
-                  }`}
+                  className={`text-base font-medium py-2 transition-colors ${location.pathname === link.path && !location.search.includes('filter') && !location.search.includes('occasion') ? "text-primary" : "text-muted-foreground"
+                    }`}
                 >
                   {link.label}
                 </Link>
