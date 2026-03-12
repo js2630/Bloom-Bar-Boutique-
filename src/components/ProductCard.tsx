@@ -36,9 +36,9 @@ const ProductCard = ({ product, className = "" }: ProductCardProps) => {
         />
 
         {/* Overlay actions */}
-        <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/10 transition-colors duration-300" />
+        <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/10 transition-colors duration-300 pointer-events-none" />
 
-        <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 md:group-hover:opacity-100 transition-opacity duration-300">
           <Button
             variant="ghost"
             size="icon"
@@ -55,38 +55,39 @@ const ProductCard = ({ product, className = "" }: ProductCardProps) => {
         </div>
 
         {product.sameDay && (
-          <span className="absolute top-3 left-3 text-xs font-medium bg-secondary text-secondary-foreground px-3 py-1 rounded-full">
+          <span className="absolute top-3 left-3 text-[10px] md:text-xs font-bold bg-primary text-primary-foreground px-2 md:px-3 py-1 rounded-full shadow-lg">
             Same Day
           </span>
         )}
 
-        {/* Add to cart bar */}
-        <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+        {/* Add to cart bar - visible on mobile by default or better positioned */}
+        <div className="absolute bottom-0 left-0 right-0 p-2 md:p-3 translate-y-full group-hover:translate-y-0 md:group-hover:translate-y-0 transition-transform duration-300 bg-gradient-to-t from-background/80 to-transparent md:bg-none">
           <Button
             onClick={handleAddToCart}
-            className="w-full gap-2 rounded-lg"
+            className="w-full gap-2 rounded-xl md:rounded-lg h-10 md:h-9 text-xs md:text-sm shadow-lg shadow-primary/20"
             size="sm"
           >
-            <ShoppingBag className="h-4 w-4" />
+            <ShoppingBag className="h-3.5 w-3.5 md:h-4 md:h-4" />
             Add to Cart
           </Button>
         </div>
       </div>
 
-      <div className="mt-3 space-y-1">
-        <h3 className="font-heading text-lg text-foreground group-hover:text-primary transition-colors">
+      <div className="mt-4 px-1 space-y-1">
+        <h3 className="font-heading text-base md:text-lg text-foreground group-hover:text-primary transition-colors line-clamp-1">
           {product.name}
         </h3>
-        <div className="flex items-center gap-2">
-          <span className="text-sm font-medium text-foreground">₹{product.price.toLocaleString()}</span>
-          {product.originalPrice && (
-            <span className="text-xs text-muted-foreground line-through">₹{product.originalPrice.toLocaleString()}</span>
-          )}
-        </div>
-        <div className="flex items-center gap-1 text-xs text-muted-foreground">
-          <span className="text-amber-500">★</span>
-          <span>{product.rating}</span>
-          <span>({product.reviews})</span>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="text-sm md:text-base font-bold text-foreground">₹{product.price.toLocaleString()}</span>
+            {product.originalPrice && (
+              <span className="text-[10px] md:text-xs text-muted-foreground line-through">₹{product.originalPrice.toLocaleString()}</span>
+            )}
+          </div>
+          <div className="flex items-center gap-1 text-[10px] md:text-xs text-muted-foreground bg-muted/50 px-2 py-0.5 rounded-full">
+            <span className="text-amber-500">★</span>
+            <span className="font-medium text-foreground">{product.rating}</span>
+          </div>
         </div>
       </div>
     </Link>
