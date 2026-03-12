@@ -34,6 +34,7 @@ const Navbar = () => {
   const { user, logout, isAuthenticated } = useAuth();
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileOccasionsOpen, setMobileOccasionsOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
@@ -191,17 +192,24 @@ const Navbar = () => {
             {navLinks.map((link) => {
               if (link.label === "Occasions") {
                 return (
-                  <div key={link.path} className="flex flex-col gap-4 py-4 px-2 bg-muted/20 rounded-[2rem] border border-border/50">
-                    <div className="flex items-center justify-between px-2">
-                      <span className="text-xs font-bold uppercase tracking-widest text-primary">{link.label}</span>
-                      <Link to="/shop" onClick={() => setMobileOpen(false)} className="text-[10px] underline text-muted-foreground uppercase font-bold">See All</Link>
-                    </div>
-                    <div className="grid grid-cols-1 gap-2">
+                  <div key={link.path} className="flex flex-col py-2 px-2 bg-muted/20 rounded-[2rem] border border-border/50 transition-all duration-300">
+                    <button 
+                      onClick={() => setMobileOccasionsOpen(!mobileOccasionsOpen)}
+                      className="flex items-center justify-between w-full p-4 rounded-2xl group"
+                    >
+                      <span className="text-sm font-bold uppercase tracking-widest text-primary font-heading">{link.label}</span>
+                      <ChevronDown className={`h-4 w-4 text-primary transition-transform duration-300 ${mobileOccasionsOpen ? "rotate-180" : ""}`} />
+                    </button>
+                    
+                    <div className={`grid grid-cols-1 gap-2 px-2 overflow-hidden transition-all duration-300 ${mobileOccasionsOpen ? "max-h-[500px] pb-4 opacity-100 mt-2" : "max-h-0 opacity-0"}`}>
                       {occasionLinks.map(occ => (
                         <Link
                           key={occ.label}
                           to={occ.path}
-                          onClick={() => setMobileOpen(false)}
+                          onClick={() => {
+                            setMobileOpen(false);
+                            setMobileOccasionsOpen(false);
+                          }}
                           className="flex items-center gap-4 p-3 rounded-2xl bg-background border border-border/50 active:scale-[0.98] transition-all"
                         >
                           <div className="h-10 w-10 rounded-xl overflow-hidden bg-muted flex-shrink-0">
@@ -211,6 +219,16 @@ const Navbar = () => {
                           <ChevronDown className="h-3 w-3 ml-auto -rotate-90 text-muted-foreground/50" />
                         </Link>
                       ))}
+                      <Link 
+                        to="/shop" 
+                        onClick={() => {
+                          setMobileOpen(false);
+                          setMobileOccasionsOpen(false);
+                        }} 
+                        className="text-[10px] text-center mt-3 underline text-muted-foreground uppercase font-bold"
+                      >
+                        See All Collections
+                      </Link>
                     </div>
                   </div>
                 );
