@@ -96,65 +96,70 @@ const ProductDetail = () => {
           </div>
 
           {/* Quantity & Actions */}
-          <div className="flex items-center gap-4 pt-2">
-            <div className="flex items-center border border-border rounded-lg">
-              <Button variant="ghost" size="icon" onClick={() => setQty(Math.max(1, qty - 1))} className="h-10 w-10">
-                <Minus className="h-4 w-4" />
-              </Button>
-              <span className="w-10 text-center text-sm font-medium">{qty}</span>
-              <Button variant="ghost" size="icon" onClick={() => setQty(qty + 1)} className="h-10 w-10">
-                <Plus className="h-4 w-4" />
+          <div className="space-y-4 pt-4">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+              <div className="flex items-center border border-border rounded-xl bg-muted/50 justify-between sm:justify-center px-2 sm:px-0">
+                <Button variant="ghost" size="icon" onClick={() => setQty(Math.max(1, qty - 1))} className="h-12 w-12 sm:h-10 sm:w-10">
+                  <Minus className="h-4 w-4" />
+                </Button>
+                <span className="w-12 text-center text-sm font-bold">{qty}</span>
+                <Button variant="ghost" size="icon" onClick={() => setQty(qty + 1)} className="h-12 w-12 sm:h-10 sm:w-10">
+                  <Plus className="h-4 w-4" />
+                </Button>
+              </div>
+
+              <Button onClick={handleAdd} size="lg" className="flex-1 h-12 gap-2 text-md font-semibold shadow-lg shadow-primary/20">
+                <ShoppingBag className="h-5 w-5" /> Add to Cart
               </Button>
             </div>
 
-            <Button onClick={handleAdd} size="lg" className="flex-1 gap-2">
-              <ShoppingBag className="h-4 w-4" /> Add to Cart
-            </Button>
-            
-            <Button 
-              variant="outline"
-              size="lg" 
-              className="flex-1 gap-2 border-border hover:bg-muted"
-              onClick={() => {
-                const phone = "917010804538";
-                const msg = `*Inquiry for ${product.name}*%0A%0AQuantity: ${qty}${message ? `%0AMessage: ${message}` : ''}%0A%0A_Please let me know the availability._`;
-                window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
-                toast.success("Inquiry sent! Redirecting...");
-              }}
-            >
-              Send Inquiry
-            </Button>
+            <div className="flex gap-3">
+              <Button 
+                variant="outline"
+                size="lg" 
+                className="flex-1 h-12 gap-2 border-border hover:bg-muted font-medium"
+                onClick={() => {
+                  const phone = "917010804538";
+                  const msg = `*Inquiry for ${product.name}*%0A%0AQuantity: ${qty}${message ? `%0AMessage: ${message}` : ''}%0A%0A_Please let me know the availability._`;
+                  window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
+                  toast.success("Inquiry sent! Redirecting...");
+                }}
+              >
+                Send Inquiry
+              </Button>
 
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={() => {
-                const url = window.location.href;
-                if (navigator.share) {
-                  navigator.share({
-                    title: product.name,
-                    text: `Check out this beautiful ${product.name} at Bloom Bar!`,
-                    url: url,
-                  });
-                } else {
-                  navigator.clipboard.writeText(url);
-                  toast.success("Link copied to clipboard!");
-                }
-              }}
-              className="h-11 w-11 shrink-0"
-              title="Share with friends"
-            >
-              <Share2 className="h-5 w-5" />
-            </Button>
+              <div className="flex gap-2">
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={() => {
+                    const url = window.location.href;
+                    if (navigator.share) {
+                      navigator.share({
+                        title: product.name,
+                        text: `Check out this beautiful ${product.name} at Bloom Bar!`,
+                        url: url,
+                      });
+                    } else {
+                      navigator.clipboard.writeText(url);
+                      toast.success("Link copied!");
+                    }
+                  }}
+                  className="h-12 w-12 shrink-0 border-border"
+                >
+                  <Share2 className="h-5 w-5" />
+                </Button>
 
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={() => { toggleWishlist(product.id); toast.success(isInWishlist(product.id) ? "Removed" : "Added to wishlist"); }}
-              className="h-11 w-11 shrink-0"
-            >
-              <Heart className={`h-5 w-5 ${isInWishlist(product.id) ? "fill-accent text-accent" : ""}`} />
-            </Button>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={() => { toggleWishlist(product.id); toast.success(isInWishlist(product.id) ? "Removed" : "Added to wishlist"); }}
+                  className="h-12 w-12 shrink-0 border-border"
+                >
+                  <Heart className={`h-5 w-5 ${isInWishlist(product.id) ? "fill-accent text-accent" : ""}`} />
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
