@@ -310,7 +310,7 @@ const CustomBouquet = () => {
                     size="lg" 
                     className="flex-1 h-12 rounded-xl border-primary/20 hover:bg-primary/5 text-xs font-bold uppercase tracking-wider"
                     onClick={() => {
-                      const phone = "918248223799";
+                      const phone = "917010804538";
                       const dateStr = date ? format(date, "PPP") : "ASAP";
                       const details = `Artisan Bouquet Request:\n- Flowers: ${selectedFlowers.map(f => f.name).join(", ")}\n- Stems: ${stemsCount}\n- Palette: ${color}\n- Greenery: ${greenery?.name || "None"}\n- Fragrance: ${fragrance ? "Yes" : "No"}\n- Wrap: ${wrapping.name}\n- Date: ${dateStr}\n\nTotal: ₹${totalPrice.toLocaleString()}`;
                       window.open(`https://wa.me/${phone}?text=${encodeURIComponent(details)}`, "_blank");

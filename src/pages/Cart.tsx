@@ -39,7 +39,7 @@ const Cart = () => {
       return;
     }
 
-    const phone = "918248223799";
+    const phone = "917010804538";
     const heading = "*New Order from Bloom Bar Website*%0A%0A";
     const customerInfo = `*Customer:* ${customerName}%0A*Phone:* ${customerPhone}%0A*Address:* ${address}%0A%0A`;
     const itemsList = "*Order Items:*%0A" + items.map(item => `- ${item.product.name} (x${item.quantity}): ₹${(item.product.price * item.quantity).toLocaleString()}`).join('%0A');

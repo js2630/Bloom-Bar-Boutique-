@@ -116,7 +116,7 @@ const ProductDetail = () => {
               size="lg" 
               className="flex-1 gap-2 border-border hover:bg-muted"
               onClick={() => {
-                const phone = "918248223799";
+                const phone = "917010804538";
                 const msg = `*Inquiry for ${product.name}*%0A%0AQuantity: ${qty}${message ? `%0AMessage: ${message}` : ''}%0A%0A_Please let me know the availability._`;
                 window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
                 toast.success("Inquiry sent! Redirecting...");

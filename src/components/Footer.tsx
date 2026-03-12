@@ -29,8 +29,8 @@ const Footer = () => {
           <div>
             <h4 className="text-sm font-medium text-background mb-4 tracking-wide uppercase">Contact</h4>
             <div className="flex flex-col gap-3 text-sm text-background/60">
-              <span className="flex items-center gap-2"><Phone className="h-4 w-4" /> +91 82482 23799</span>
-              <span className="flex items-center gap-2"><Mail className="h-4 w-4" /> jagadishofficial26@gmail.com</span>
+              <span className="flex items-center gap-2"><Phone className="h-4 w-4" /> +91 70108 04538</span>
+              <span className="flex items-center gap-2"><Mail className="h-4 w-4" /> ShobanaSri@gmail.com</span>
               <a href="https://www.instagram.com/the.bloombar_in" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-background transition-colors">
                 <Instagram className="h-4 w-4" /> @the.bloombar_in
               </a>
