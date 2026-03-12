@@ -101,14 +101,14 @@ const Navbar = () => {
                   </div>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="center" className="w-[85vw] sm:w-64 mt-3 p-3 rounded-[1.8rem] border-primary/10 shadow-2xl backdrop-blur-xl bg-background/95 animate-scale-in">
-                <div className="p-5 flex flex-col items-center text-center">
-                  <div className="h-14 w-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-3 sm:hidden">
-                    <User className="h-7 w-7" />
+              <DropdownMenuContent align="center" className="w-60 mt-3 p-2 rounded-[1.5rem] border-primary/10 shadow-2xl backdrop-blur-xl bg-background/95 animate-scale-in">
+                <div className="p-3 flex flex-col items-center text-center">
+                  <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-2 sm:hidden">
+                    <User className="h-5 w-5" />
                   </div>
-                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/60 mb-2">My Profile</p>
-                  <p className="text-lg sm:text-sm font-heading font-bold text-foreground break-all w-full">{user?.name}</p>
-                  <p className="text-xs text-muted-foreground break-all w-full opacity-70">{user?.email}</p>
+                  <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-primary/60 mb-1">Account</p>
+                  <p className="text-sm font-heading font-bold text-foreground break-all w-full truncate">{user?.name}</p>
+                  <p className="text-[10px] text-muted-foreground break-all w-full opacity-70 truncate">{user?.email}</p>
                 </div>
                 
                 {/* Desktop-only links */}
@@ -140,12 +140,12 @@ const Navbar = () => {
                 <div className="p-1">
                   <DropdownMenuItem 
                     onClick={logout}
-                    className="p-3 sm:p-3 rounded-xl focus:bg-destructive/5 focus:text-destructive text-destructive cursor-pointer flex items-center justify-center sm:justify-start gap-3 transition-colors group w-full"
+                    className="p-2 sm:p-3 rounded-xl focus:bg-destructive/5 focus:text-destructive text-destructive cursor-pointer flex items-center justify-center sm:justify-start gap-3 transition-colors group w-full"
                   >
-                    <div className="h-10 w-10 sm:h-8 sm:w-8 rounded-lg bg-destructive/5 flex items-center justify-center group-hover:bg-destructive/10 transition-colors">
-                      <LogOut className="h-5 w-5 sm:h-4 sm:w-4" />
+                    <div className="h-8 w-8 rounded-lg bg-destructive/5 flex items-center justify-center group-hover:bg-destructive/10 transition-colors">
+                      <LogOut className="h-4 w-4" />
                     </div>
-                    <span className="text-md sm:text-sm font-bold">Sign Out</span>
+                    <span className="text-xs sm:text-sm font-bold">Sign Out</span>
                   </DropdownMenuItem>
                 </div>
               </DropdownMenuContent>
