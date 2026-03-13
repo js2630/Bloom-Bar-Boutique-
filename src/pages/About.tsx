@@ -25,7 +25,7 @@ const About = () => {
             <span className="text-primary italic font-serif">Tells a Story</span>
           </h1>
           <p className="text-lg md:text-xl text-background/70 max-w-2xl mx-auto leading-relaxed animate-slide-up [animation-delay:200ms]">
-            A boutique floral atelier dedicated to delivering happiness through curated, symbolic arrangements.
+            A bouquet floral atelier dedicated to delivering happiness through curated, symbolic arrangements.
           </p>
         </div>
       </section>
@@ -63,7 +63,7 @@ const About = () => {
                   { icon: Heart, title: "Symbolic Stems", text: "Each flower is chosen for its unique meaning and story." },
                   { icon: Sparkles, title: "Bold Aesthetic", text: "Signature high-contrast wrapping that makes blooms pop." },
                   { icon: Star, title: "Main Character Energy", text: "Radiant designs that stand out and capture the moment." },
-                  { icon: MapPin, title: "Chennai Rooted", text: "Boutique floral service delivering joy across Chennai." },
+                  { icon: MapPin, title: "Chennai Rooted", text: "Bouquet floral service delivering joy across Chennai." },
                 ].map((item, i) => (
                   <div key={i} className="space-y-2">
                     <item.icon className="h-6 w-6 text-primary" />
